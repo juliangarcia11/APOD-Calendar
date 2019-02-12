@@ -13,6 +13,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ElectronService } from './providers/electron.service';
+import { ApodApiService } from './providers/apod-api.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
@@ -48,9 +49,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule
   ],
-  providers: [ElectronService],
+  providers: [ElectronService, ApodApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
