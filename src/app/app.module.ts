@@ -16,6 +16,11 @@ import { ElectronService } from './providers/electron.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
+// my added imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material';
+
+// my written components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
@@ -41,7 +46,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: (HttpLoaderFactory),
         deps: [HttpClient]
       }
-    })
+    }),
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [ElectronService],
   bootstrap: [AppComponent]
