@@ -11,7 +11,7 @@ const httpOptions = {
 })
 export class ApodApiService {
 
-  url: string = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+  url: string = "https://api.nasa.gov/planetary/apod?api_key=9poEouZ0VjjQo8ieQF00djY57RnRdjKdEZ7C52vr";
 
   constructor(private http: HttpClient) { }
 

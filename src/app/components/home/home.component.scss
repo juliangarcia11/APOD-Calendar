@@ -1,19 +1,4 @@
-.container {
-  height: 100%;
-
-  // background: url(../../../assets/background.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
-
-  .header {
-    text-align: center;
-    color: black;
-    margin:0;
-    padding:20px 20px;
-  }
-
-  mat-grid-tile {
-    background: lightblue;
-  }
-
+.header {
+  text-align: center;
+  color: black;
 }

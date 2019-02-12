@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MatGridListModule, MatCardModule } from '@angular/material';
 import { ApodApiService } from '../../providers/apod-api.service';
 import { Observable } from 'rxjs/Rx';
 
@@ -8,7 +8,7 @@ export interface Tile {
  cols: number;
  rows: number;
  text: string;
- border: string;
+ image: string;
 }
 
 @Component({
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   // temporary
   tiles: Tile[] = [];
-  apod;
+  apod: Object;
 
   constructor(private _apodService: ApodApiService) {
     // // temporary
@@ -52,7 +52,24 @@ export class HomeComponent implements OnInit {
   updateCalendar() {
     var data = this.apod;
     console.log('done loading apod', this.apod)
-    this.tiles.push({ text: data.media_type,    cols: 1, rows: 1, border: '3px double purple' })
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
   }
 
 }

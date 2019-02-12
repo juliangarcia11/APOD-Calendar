@@ -2,15 +2,17 @@
   <div class="header">
     <h1>{{ 'PAGES.HOME.TITLE' | translate }}</h1>
   </div>
-  <div class="calendar">
-    <mat-grid-list cols="7" rowHeight="100px">
-      <mat-grid-tile-header></mat-grid-tile-header>
-      <mat-grid-tile *ngFor="let tile of tiles"
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.border]="tile.border">
-        {{ tile.text }}
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
+  <mat-grid-list cols="4" rowHeight="5:2">
+    <mat-grid-tile-header></mat-grid-tile-header>
+    <mat-grid-tile *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows">
+      <mat-card>
+        <mat-card-title-group>
+          <mat-card-title> {{ tile.text }} </mat-card-title>
+          <img mat-card-sm-image src="{{tile.image}}">
+        </mat-card-title-group>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

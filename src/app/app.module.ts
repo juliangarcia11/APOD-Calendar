@@ -19,7 +19,7 @@ import { WebviewDirective } from './directives/webview.directive';
 
 // my added imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule } from '@angular/material';
+import { MatGridListModule, MatCardModule } from '@angular/material';
 
 // my written components
 import { AppComponent } from './app.component';
@@ -50,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     BrowserAnimationsModule,
     MatGridListModule,
+    MatCardModule,
     HttpClientModule
   ],
   providers: [ElectronService, ApodApiService],
