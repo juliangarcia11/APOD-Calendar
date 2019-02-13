@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatGridListModule, MatCardModule } from '@angular/material';
+import { Observable } from 'rxjs';
+
 import { ApodApiService } from '../../providers/apod-api.service';
-import { Observable } from 'rxjs/Rx';
 
 // temporary
 export interface Tile {
@@ -41,8 +42,9 @@ export class HomeComponent implements OnInit {
     this.getAPOD();
   }
 
-  getAPOD() {
-    this._apodService.getAPOD().subscribe(
+  getAPOD(startDate: string = "") {
+    startDate = "2019-01-20"; // need to add moment to jsut get the last 20 days
+    this._apodService.getAPOD(startDate).subscribe(
       data => { this.apod = data },
       err => console.error(err),
       () => this.updateCalendar()
@@ -51,25 +53,10 @@ export class HomeComponent implements OnInit {
 
   updateCalendar() {
     var data = this.apod;
-    console.log('done loading apod', this.apod)
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
-    this.tiles.push({ text: data.title, cols: 1, rows: 1, image: data.url});
+    console.log('done loading apod', this.apod);
+    for (var i = 0; i < data.length; i++) {
+      this.tiles.push({ text: data[i].title, cols: 1, rows: 1, image: data[i].url});
+    }
   }
 
 }
