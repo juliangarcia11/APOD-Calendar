@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatGridListModule, MatCardModule } from '@angular/material';
 import { Observable } from 'rxjs';
-import * as Date from 'date-format';
+import * as Moment from 'moment';
 
 import { ApodApiService } from '../../providers/apod-api.service';
 
@@ -34,11 +34,10 @@ export class HomeComponent implements OnInit {
   *
   * @param startDate    The Earliest APOD date to request for
   */
-  getAPOD(startDate: string = "2019-02-16") {
-    // TODO: Show the last 10 days by default; temporarily hard coded date above
-    // if no start date was provided, let's get today's date
+  getAPOD(startDate: string = "") {
+    // if no start date was provided, let's get the last 8 APODs to fill two rows in the app
     if (startDate == "") {
-      startDate = Date('yyyy-MM-dd').toString();
+      startDate = Moment().subtract(1, 'week').format("YYYY-MM-DD");
     }
 
     // use the angular service to make the API request,
@@ -62,7 +61,7 @@ export class HomeComponent implements OnInit {
     console.log('data',data);
 
     // create all the tile items for the html template
-    for (var i = 1; i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
       this.apodCards.push({ text: data[i].title, cols: 1, rows: 1, image: data[i].url, details: data[i].explanation, isCollapsed: true});
     }
   }
