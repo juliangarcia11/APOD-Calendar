@@ -1,0 +1,16 @@
+<!-- <mat-grid-tile *ngIf="title"
+  [colspan]="cols"
+  [rowspan]="rows">
+  <mat-card class="apod-card" tabindex="0">
+    <img mat-card-sm-image src="{{url}}">
+    <mat-card-content *ngIf="!isCollapsed">
+      <mat-card-title> {{title}} </mat-card-title>
+    </mat-card-content>
+  </mat-card>
+</mat-grid-tile> -->
+<mat-card class="apod-card" tabindex="0">
+  <img mat-card-sm-image src="{{ url }}">
+  <mat-card-content *ngIf="!isCollapsed">
+    <mat-card-title> {{ title }} </mat-card-title>
+  </mat-card-content>
+</mat-card>
