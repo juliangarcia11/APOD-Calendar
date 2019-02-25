@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
   *
   * TODO decouple ApodCardComponent
   */
-  collapse(card : var): void {
+  collapse(card): void {
     console.log(card);
     card.isCollapsed = !card.isCollapsed;
   }
