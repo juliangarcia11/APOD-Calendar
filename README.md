@@ -38,5 +38,6 @@ My additions to this project started by [Maximegris](https://github.com/maximegr
 - Color Palette via [Paletton](http://paletton.com/#uid=23h0u0kaOw02WSq6vHQfLr2lplp)
 - [Angular](https://angular.io)
 - [Electron](https://electronjs.org/)
+- [npm](https://www.npmjs.com/)
 
 [![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-icon.svg)](https://angular.io/) [![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-icon.svg)](https://electronjs.org/)
