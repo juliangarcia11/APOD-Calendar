@@ -58,11 +58,19 @@ export class HomeComponent implements OnInit {
     var data = [];
     // concat the returned data;
     data = data.concat(this.apod); // this way if only 1 item is returned, there is still a valid `data.length` property
-    console.log('data',data);
+    data.reverse(); // `reverse` puts the list in most current order
 
     // create all the tile items for the html template
     for (var i = 0; i < data.length; i++) {
-      this.apodCards.push({ text: data[i].title, cols: 1, rows: 1, image: data[i].url, details: data[i].explanation, isCollapsed: true});
+      this.apodCards.push({
+        text: data[i].title,
+        cols: 1,
+        rows: 1,
+        image: data[i].url,
+        details: data[i].explanation,
+        date: Moment(data[i].date).format("MMMM Do, YYYY"),
+        isCollapsed: true
+      });
     }
   }
 
@@ -74,7 +82,7 @@ export class HomeComponent implements OnInit {
   * TODO decouple ApodCardComponent
   */
   collapse(card): void {
-    console.log(card);
+    card.cols = (card.cols > 1) ? 1 : 4;
     card.isCollapsed = !card.isCollapsed;
   }
 }

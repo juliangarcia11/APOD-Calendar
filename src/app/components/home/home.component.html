@@ -8,11 +8,12 @@
       [rowspan]="card.rows"
       (click)="collapse(card)">
       <mat-card class="apod-card" tabindex="0">
-        <mat-card-title *ngIf="card.isCollapsed">
+        <mat-card-title>
           {{ card.text }}
         </mat-card-title>
         <img mat-card-lg-image src="{{card.image}}" *ngIf="card.isCollapsed">
         <mat-card-content *ngIf="!card.isCollapsed">
+          <h3>{{ card.date }}</h3>
           {{ card.details }}
         </mat-card-content>
       </mat-card>
