@@ -8,9 +8,12 @@
       [rowspan]="card.rows"
       (click)="collapse(card)">
       <mat-card class="apod-card" tabindex="0">
-        <img mat-card-sm-image src="{{card.image}}">
+        <mat-card-title *ngIf="card.isCollapsed">
+          {{ card.text }}
+        </mat-card-title>
+        <img mat-card-lg-image src="{{card.image}}" *ngIf="card.isCollapsed">
         <mat-card-content *ngIf="!card.isCollapsed">
-          <mat-card-title> {{ card.text }} </mat-card-title>
+          {{ card.details }}
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
