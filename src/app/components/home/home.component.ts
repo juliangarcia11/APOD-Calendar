@@ -4,24 +4,7 @@ import { Observable } from 'rxjs';
 import * as Date from 'date-format';
 
 import { ApodApiService } from '../../providers/apod-api.service';
-
-// temporary
-export interface Tile {
- cols: number;
- rows: number;
- text: string;
- image: string;
-}
-
-
-// copyright: string;
-// date: string;
-// explanation: string;
-// hdurl: string;
-// media_type: string;
-// service_version: string;
-// title: string;
-// url: string;
+import { ApodCardComponent } from '../apod-card/apod-card.component';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +14,7 @@ export interface Tile {
 export class HomeComponent implements OnInit {
 
   // temporary
-  tiles: Tile[] = [];
+  apodCards: [] = [];// TODO decouple ApodCardComponent
   apod: Object;
 
   isCollapsed: boolean = true;
@@ -62,19 +45,17 @@ export class HomeComponent implements OnInit {
     var data = [];
     // concat the returned data;
     data = data.concat(this.apod); // this way if only 1 item is returned, there is still a valid `data.length` property
-    console.log('data',data);
+    // console.log('data',data);
 
     // create all the tile items for the html template
     for (var i = 1; i < data.length; i++) {
-      this.tiles.push({ text: data[i].title, cols: 1, rows: 1, image: data[i].url});
+      this.apodCards.push({ text: data[i].title, cols: 1, rows: 1, image: data[i].url, isCollapsed: true});
     }
   }
 
-  /**
-  * Simply flips the `isCollapsed` property
-  * therefore triggering a rerender of the view
-  */
-  collapse(): void {
-    this.isCollapsed = !this.isCollapsed;
+  // TODO decouple ApodCardComponent
+  collapse(card : ApodCardComponent): void {
+    console.log(card);
+    card.isCollapsed = !card.isCollapsed;
   }
 }

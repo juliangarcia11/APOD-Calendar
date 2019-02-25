@@ -3,15 +3,14 @@
     <h1>{{ 'PAGES.HOME.TITLE' | translate }}</h1>
   </div>
   <mat-grid-list cols="4">
-    <mat-grid-tile *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      (click)="collapse()"
-      >
+    <mat-grid-tile *ngFor="let card of apodCards"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+      (click)="collapse(card)">
       <mat-card class="apod-card" tabindex="0">
-        <img mat-card-sm-image src="{{tile.image}}">
-        <mat-card-content *ngIf="!isCollapsed">
-          <mat-card-title> {{ tile.text }} </mat-card-title>
+        <img mat-card-sm-image src="{{card.image}}">
+        <mat-card-content *ngIf="!card.isCollapsed">
+          <mat-card-title> {{ card.text }} </mat-card-title>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
