@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatGridListModule, MatCardModule } from '@angular/material';
 import { Observable } from 'rxjs';
+import * as Date from 'date-format';
 
 import { ApodApiService } from '../../providers/apod-api.service';
 
@@ -11,6 +12,16 @@ export interface Tile {
  text: string;
  image: string;
 }
+
+
+// copyright: string;
+// date: string;
+// explanation: string;
+// hdurl: string;
+// media_type: string;
+// service_version: string;
+// title: string;
+// url: string;
 
 @Component({
   selector: 'app-home',
@@ -23,27 +34,22 @@ export class HomeComponent implements OnInit {
   tiles: Tile[] = [];
   apod: Object;
 
+  isCollapsed: boolean = true;
+
   constructor(private _apodService: ApodApiService) {
-    // // temporary
-    // for (var i = 0; i < 5; i++) {
-    //   this.tiles.push(
-    //     { text: 'SUNDAY',    cols: 1, rows: 1, border: '3px double purple' },
-    //     { text: 'MONDAY',    cols: 1, rows: 1, border: '3px double purple' },
-    //     { text: 'TUESDAY',   cols: 1, rows: 1, border: '3px double purple' },
-    //     { text: 'WEDDAY',    cols: 1, rows: 1, border: '3px double purple' },
-    //     { text: 'THURSDAY',  cols: 1, rows: 1, border: '3px double purple' },
-    //     { text: 'FRIDAY',    cols: 1, rows: 1, border: '3px double purple' },
-    //     { text: 'SATURDAY',  cols: 1, rows: 1, border: '3px double purple' }
-    //   );
-    // }
   }
 
   ngOnInit() {
     this.getAPOD();
   }
 
-  getAPOD(startDate: string = "") {
-    startDate = "2019-01-20"; // need to add moment to jsut get the last 20 days
+  // TODO: Show the last 10 days by default; temporarily hard coded date
+  getAPOD(startDate: string = "2019-02-16") {
+    // if no start date was provided, let's get today's date
+    if (startDate == "") {
+      startDate = Date('yyyy-MM-dd').toString();
+    }
+
     this._apodService.getAPOD(startDate).subscribe(
       data => { this.apod = data },
       err => console.error(err),
@@ -51,12 +57,24 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  updateCalendar() {
-    var data = this.apod;
-    console.log('done loading apod', this.apod);
-    for (var i = 0; i < data.length; i++) {
+  updateCalendar(): void {
+    // create data array
+    var data = [];
+    // concat the returned data;
+    data = data.concat(this.apod); // this way if only 1 item is returned, there is still a valid `data.length` property
+    console.log('data',data);
+
+    // create all the tile items for the html template
+    for (var i = 1; i < data.length; i++) {
       this.tiles.push({ text: data[i].title, cols: 1, rows: 1, image: data[i].url});
     }
   }
 
+  /**
+  * Simply flips the `isCollapsed` property
+  * therefore triggering a rerender of the view
+  */
+  collapse(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

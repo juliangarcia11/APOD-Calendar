@@ -1,4 +1,10 @@
+@import "~palette.scss";
+
 .header {
   text-align: center;
-  color: black;
+  color: $color-complement-0;
+}
+
+.apod-card {
+  background-color: $color-complement-1;
 }
