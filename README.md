@@ -27,10 +27,15 @@ This now runs the Angular + Electron app in a local development environment with
 The application code is managed by `main.ts`. In this sample, the app runs with a simple Angular App (http://localhost:4200) and an Electron window. "Developer Tools" can be shown by uncommenting `win.webContents.openDevTools();` in `main.ts`.
 
 ### My Code
-My additions to this project started by [Maximegris](https://github.com/maximegris/angular-electron.git) can be found under the following directories:
-
+My additions to this project can be found under the following directories:
 - [Components Folder](src/app/components/)
 - [APOD API Provider Class](src/app/providers/apod-api.service.ts)
+
+![Current Commit](src/assets/progress-screenshots/APOD-Calendar-ver0-2.png)
+
+Here you can see the home view of the APOD-Calendar App. Each APOD has its own expandable card that displays data about the photo. The cards can be clicked to display a summary of the image, as represented by the card expanded across the bottom row in this image. If a photo's image resource cannot be found, it will be represented with a placeholder image like the second image on the first row.
+
+#### [*Checkout these Progress Screenshots!*](src/assets/progress-screenshots/PROGRESS.md)
 
 ### Credits
 - As an avid consumer of astronomy photos and news, I was delighted to find out NASA had opened up some of their troves of data to the public via APIs. The data set used in this project is pulled from [here](https://api.nasa.gov/api.html#apod). Thank you NASA for continuing to inspire generations to come. We've only just started exploring.
@@ -38,5 +43,7 @@ My additions to this project started by [Maximegris](https://github.com/maximegr
 - Color Palette via [Paletton](http://paletton.com/#uid=23h0u0kaOw02WSq6vHQfLr2lplp)
 - [Angular](https://angular.io)
 - [Electron](https://electronjs.org/)
+- [npm](https://www.npmjs.com/)
+- [Placeholder Images](https://placeholder.com/)
 
 [![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-icon.svg)](https://angular.io/) [![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-icon.svg)](https://electronjs.org/)
